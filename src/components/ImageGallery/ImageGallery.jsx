@@ -1,20 +1,22 @@
-/* Список карток зображень. 
+/*
+ * Список карток зображень. 
  * Створює DOM-елемент такої структури.
  */
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from './ImageGalleryItem';
 //import apiService from '../Api/apiService';
-//import styles from "./ContactForm.module.css";
 import '../../styles.css';
 
 const ImageGallery = ({ images, onClickImg }) => (
-  <ul className="ImageGallery">
+    <ul className="ImageGallery">
+        
         {images.map(({ id, webformatURL, largeImageURL }) => {
+            
             return (
                 <ImageGalleryItem key={id} src={webformatURL} alt="There is a picture" onClick={() => onClickImg(largeImageURL)} />
             )
         })}
-  </ul>
+    </ul>
 )
 
 ImageGallery.propTypes = {

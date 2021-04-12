@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiService from './Api/apiService';
+import { PER_PAGE } from './Api/apiVars';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Searchbar from "./components/Searchbar/Searchbar";
 import { Button }  from "./components/Button/Button";
@@ -13,8 +14,7 @@ const INIT_STATE = {
 };
   
 class App extends Component {
-
-   state = {
+  state = {
     ...INIT_STATE,
     searchQuery: '',
     isLoading: false, //Loading:
@@ -23,10 +23,16 @@ class App extends Component {
     totalPage: 0      
   };
 
-  componentDidMount() { }
+  componentDidMount() { 
+    const { query } = this.state;
 
+    // this.setState({ isLoading: true });
+    // this.fetchImages(query);
+  }
   componentDidUpdate(prevProp, prevState) {
-    // Sending query
+    /* 
+     *   Sending query
+     */
     const prevQuery = prevState.searchQuery;
     const nextQuery = this.state.searchQuery;
 
@@ -34,7 +40,9 @@ class App extends Component {
       this.fetchImages();
     }
 
-    // Scroll to bottom page
+    /* 
+     *   Scroll to bottom page
+     */
     const prevPage = prevState.page;
     const nextPage = this.state.page;
     if (prevPage !== nextPage) {
@@ -56,7 +64,7 @@ class App extends Component {
         return this.setState(prevState => ({
           images: [...prevState.images, ...images],
           page: prevState.page + 1,
-          totalPage: data.totalHits - 12 * this.state.page
+          totalPage: data.totalHits - PER_PAGE * this.state.page
         }))
       },
       )
@@ -83,29 +91,29 @@ class App extends Component {
   }
 
   render() {
-    //const { images, isLoading, error, totalPage, showModal, largeImage } = this.state;
     const { images, isLoading, totalPage, showModal, largeImage } = this.state;
+    
     return (
       <div>
-        {/* Search image */}
+                {/* Search image */}
         <Searchbar onSearch={this.handleSearchQuery} disabled={showModal} />
 
-        {/* Show error */}
+                {/* Show error */}
         {/* {error && <p>Whoops, something went wrong: {error.message}</p>} */}
 
-        {/* Show image gallery */}
+                {/* Show image gallery */}
         {images.length > 0 && <ImageGallery images={images} onClickImg={this.toggleModal} />}
 
-        {/* Show loader when downloading data */}
+                {/* Show loader when downloading data */}
         {isLoading && <Loader />}
 
-        {/* Show button-more after request */}
+                {/* Show button-more after request */}
         {totalPage > 0 && <Button onLoadMore={this.handleLoadMore} />}
 
-        {/* Show a large image in the modal */}
+                {/* Show a large image in the modal */}
         {largeImage && <Modal onClose={this.toggleModal}>
-          <img src={largeImage} alt="" />
-        </Modal>}
+                          <img src={largeImage} alt="" />
+                       </Modal>}
       </div>
     )
   }

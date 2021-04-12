@@ -1,28 +1,18 @@
 import LoaderSpinner from "react-loader-spinner";
-    import { styled } from 'react-jss';
-      
-    const useStyles = styled({
-      div: `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      `,
-    });
+  // import { styled } from 'react-jss';
+import styles from './Loader.module.css';
 
 const Loader = () => {
-  const classes = useStyles()
   return (
-     <div className={classes.div}>
-    {/* <div> */}
+    <div className={styles.Loader}>
       <LoaderSpinner
         type="Watch"
         color="#00BFFF"
-        height={40}
-        width={40}
+        height={80}
+        width={80}
         timeout={3000} //3 secs
       />
-      {/* <span className="Loading">Loading ...</span> */}
+      <span className={styles.Loading}>Loading ...</span>
     </div>
   );
 }

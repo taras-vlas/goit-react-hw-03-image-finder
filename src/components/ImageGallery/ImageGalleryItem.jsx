@@ -1,4 +1,5 @@
-/* Компонент елемента списка ImageGalleryItem з зображенням. 
+/* 
+ * Компонент елемента списка ImageGalleryItem з зображенням. 
  * Створює DOM-елемент такої структури:
  */
 //import React, { Component } from "react";
@@ -29,6 +30,15 @@ export { ImageGalleryItem };
 
 
 
+    
+
+
+
+
+
+
+
+    
     /* 
      *  on class 
      */

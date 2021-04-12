@@ -1,15 +1,14 @@
 /*    Рядок пошуку   Searchbar
- * Компонент приймає один проп `onSubmit` - функцію для передачі
- * значення інпут при сабміті форми /проверки (валидации) формы перед отправкой на сервер/. 
- * Створює DOM-елемент такої структури. 
+ *  Компонент приймає один проп `onSubmit` - функцію для передачі
+ *  значення інпут при сабміті форми /проверки (валидации) формы перед отправкой на сервер/. 
+ *  Створює DOM-елемент такої структури. 
  */
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
-// //import styles from "./Searchbar.module.css";
+import PropTypes from "prop-types";
 import "../../styles.css";
 
-//class Searchbar extends Component {
-export default class Searchbar extends Component {
+//export default class Searchbar extends Component {
+class Searchbar extends Component {
   state = {
     value: ''
   }
@@ -50,8 +49,16 @@ export default class Searchbar extends Component {
     )
   }
 }
+  Searchbar.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  };
 
-//export default Searchbar;
+export default Searchbar;
+
+
+
+
+
 
 
 
