@@ -4,7 +4,7 @@
       */
 import React, { Component } from "react";
 //import PropTypes from "prop-types";
-import "../../styles.css";
+import styles from './Modal.module.css';
 
 
 
@@ -32,8 +32,8 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className="Overlay" onClick={this.closeModal}>
-        <div className="Modal">
+      <div className={styles.Overlay} onClick={this.closeModal}>
+        <div className={styles.Modal}>
           {this.props.children}
         </div>
       </div>

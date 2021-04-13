@@ -1,14 +1,20 @@
 /*
  * Список карток зображень. 
  * Створює DOM-елемент такої структури.
+ * 
+ *      `id` - унікальний ідентифікатор
+ *      `webformatURL` - посилання на маленьке зображення для списку карток
+ *      `largeImageURL` - посилання на велике зображення для модального вікна 
  */
 import PropTypes from 'prop-types';
+import defaultImage from '../default.jpg';
 import { ImageGalleryItem } from './ImageGalleryItem';
 //import apiService from '../Api/apiService';
-import '../../styles.css';
+//import '../../styles.css';
+import styles from './ImageGalleryItem.module.css';
 
 const ImageGallery = ({ images, onClickImg }) => (
-    <ul className="ImageGallery">
+    <ul className={styles.ImageGallery}>
         
         {images.map(({ id, webformatURL, largeImageURL }) => {
             
@@ -17,15 +23,20 @@ const ImageGallery = ({ images, onClickImg }) => (
             )
         })}
     </ul>
-)
+);
 
 ImageGallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    webformatURL: PropTypes.string.isRequired
-  })).isRequired,
-  onClickImg: PropTypes.func.isRequired
-}
+    images: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        webformatURL: PropTypes.string.isRequired
+    })).isRequired,
+    onClickImg: PropTypes.func.isRequired
+};
+
+ImageGallery.defaultProps = {  
+    webformatURL: defaultImage,
+    largeImageURL: defaultImage,
+};
 
 export default ImageGallery;
 

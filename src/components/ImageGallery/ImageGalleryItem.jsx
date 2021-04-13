@@ -4,13 +4,15 @@
  */
 //import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import '../../styles.css';
+import defaultImage from '../default.jpg';
+import styles from './ImageGalleryItem.module.css';
+//import '../../styles.css';
 
 const ImageGalleryItem = ({ src, alt, onClick }) => {
-//const ImageGalleryItem = ({ img, tags, onLarge }) => {
+
     return (
-     <li className="ImageGalleryItem">
-        <img className="ImageGalleryItem-image"
+        <li className={styles.ImageGalleryItem}>
+            <img className={styles.ImageGalleryItemImage}
             src={src}
             alt={alt}
             onClick={onClick}
@@ -25,6 +27,10 @@ const ImageGalleryItem = ({ src, alt, onClick }) => {
         onClick: PropTypes.func.isRequired
     };
   
+    ImageGalleryItem.defaultProps = {  
+        src: defaultImage,
+    };
+    
 export { ImageGalleryItem };
 
 

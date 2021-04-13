@@ -17,9 +17,9 @@ class App extends Component {
   state = {
     ...INIT_STATE,
     searchQuery: '',
-    isLoading: false, //Loading:
-    largeImage: '',   //largeImg:
-    // error: null,
+    isLoading: false, 
+    largeImage: '',   
+    //  error: null,
     totalPage: 0      
   };
 
